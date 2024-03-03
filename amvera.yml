@@ -1,0 +1,17 @@
+meta:
+  environment: python
+  toolchain:
+    name: pip
+    version: 3.11
+build:
+  requirementsPath: requirements.txt
+run:
+#  command: cd src \
+#    && gunicorn -k uvicorn.workers.UvicornWorker config.wsgi:application \
+#    DJANGO_SETTINGS_MODULE=config.settings --bind 0.0.0.0:80
+#  command: cd src \
+#    && gunicorn config.wsgi:application --bind 0.0.0.0:8000
+  command: cd src \
+    && python3 manage.py runserver 0.0.0.0:8000
+  persistenceMount: /data
+  containerPort: 8000
