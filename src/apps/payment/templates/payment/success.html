@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load static %}
+{% load carts_tags %}
+
+{% block modal_cart %}
+	{% include 'includes/cart_button.html' %}
+{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class=" bg-white p-4 mb-4 mx-2 rounded custom-shadow">
+                <h3 class="text-center mb-4">Успешная оплата!</h3>
+                <div class="text-center container" id="cart-items-container">
+                    <!-- Разметка -->
+                    Спасибо за успешную оплату!
+                    У нас много интересного, ждем Вас снова!
+                    <!-- Закончилась разметка -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock  %}

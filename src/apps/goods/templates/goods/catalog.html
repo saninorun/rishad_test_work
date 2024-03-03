@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block modal_cart %}
+	{% include 'includes/cart_button.html' %}
+{% endblock %}
+
+
+{% block content %}
+<div class="row">
+
+    {% for product in goods %}
+        <!-- Карта товара -->
+        <div class="col-lg-4 col-md-6 p-4">
+            <div class="card border-primary rounded custom-shadow">
+                {% if product.image %}
+                    <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}">
+                {% else %}
+                    <img src="{% static "deps/images/Not found image.png" %}" class="card-img-top" alt="...">
+                {% endif %}
+                <div class="card-body">
+                    <a href="{% url "catalog:product" product.slug %}">
+                        <p class="card-title">
+                            {{ product.title }}
+                        </p>
+                    </a>
+                    <p class="card-text">
+                        {% autoescape off %}
+                            {{ product.description|truncatechars:35 }}
+                        {% endautoescape %}
+                    </p>
+                    <div class="d-flex justify-content-between">
+                        <p><strong>{{ product.price }} $</strong></p>
+                        <a href="{% url 'carts:cart_add' %}" class="btn add-to-cart"
+                        data-product-id="{{ product.id }}">
+                            {% csrf_token %}
+                            <img class="mx-1" src="{% static "deps/icons/cart-plus.svg" %}" alt="Catalog Icon"
+                                width="32" height="32">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+
+
+
+</div>
+{% endblock  %}
+
+
+{% block footer %}
+<footer class="py-4 bg-dark">
+    <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy; Home Python Hub Studio 2023</p>
+    </div>
+</footer>
+{% endblock  %}

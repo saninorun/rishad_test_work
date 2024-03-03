@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load static %}
+{% load carts_tags %}
+
+{% block modal_cart %}
+	{% include 'includes/cart_button.html' %}
+{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class=" bg-white p-4 mb-4 mx-2 rounded custom-shadow">
+                <h3 class="text-center mb-4">Опс! Оплата не прошла!</h3>
+                <div class="text-center container" id="cart-items-container">
+                    <!-- Разметка -->
+                    Что-то случилось при оплате.
+                    К сажалению Вы не оплатили товары и попробуйте снова оплатить.
+                    <!-- Закончилась разметка -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock  %}
